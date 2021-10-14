@@ -90,7 +90,7 @@
       <material name="ocean_blue"/>
       <!-- <origin rpy="0 3.1415 -1.57075" xyz="0 0 0"/> NOT THIS ONE-->
       <!-- <origin rpy="-1.57075 3.1415 1.57075" xyz="0 0 0"/> -->
-      <origin rpy="0 0 0" xyz="0 0 0.010"/>
+      <origin rpy="0 0 0" xyz="0 0 0.020"/>
     </visual>
     <collision>
       <geometry>
@@ -121,14 +121,14 @@
       </geometry>
       <!-- <origin rpy="0 -1.57075 -0.2655555" xyz="0 0 -0.075"/> NOT THIS ONE-->
       <!-- <origin rpy="0 -1.57075 1.305240" xyz="0 0 -0.075"/> -->
-      <origin rpy="0 1.5708 0 " xyz=".0725 0 0"/>
+      <origin rpy="0 1.5708 0 " xyz=".0675 0 0"/>
       <material name="ocean_blue"/>
     </visual>
     <collision>
       <geometry>
         <cylinder length="0.145" radius="0.020"/>
       </geometry>
-      <origin rpy="0 1.57075 -0.27075" xyz="0.075 0 0"/>
+      <origin rpy="0 1.57075 -0.27075" xyz="0.075 0.0 0"/>
     </collision>
     <collision>
       <geometry>
@@ -156,7 +156,7 @@
         <cylinder length="0.040" radius="0.020"/>
       </geometry>
       <!-- <origin rpy="1.57075 0 0" xyz="0 0 0"/> -->
-      <origin rpy="0 0 0" xyz="0 0 0"/>/>
+      <origin rpy="0 0 0" xyz="0 0 0.0"/>/>
       <material name="ocean_blue"/>
     </visual>
     <collision>
@@ -185,7 +185,8 @@
         <!-- <mesh filename="/home/hkolano/Stuff/coupledDynamics/meshes/archived_meshes/Wrist3.obj"/> -->
         <cylinder length="0.140" radius="0.020"/>
       </geometry>
-      <origin xyz="0.0 0.003 -0.098"/>
+      <!-- <origin xyz="0.0 0.003 -0.098"/> -->
+      <origin xyz="0.0 0.003 -0.075"/>
       <!-- <origin rpy="1.57075 0 0" xyz="0 0 0"/> -->
       <material name="ocean_blue"/>
     </visual>
