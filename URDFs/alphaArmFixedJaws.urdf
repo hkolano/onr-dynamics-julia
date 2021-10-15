@@ -207,7 +207,7 @@
     </collision>
     <!-- TODO: GET APPROPOATE MASSES (this is 50g ball at end) -->
     <inertial>
-      <mass value="0.05"/>
+      <mass value="0.00"/>
       <origin xyz="-.01 -0.045 0.0"/>
       <inertia ixx="0.000010" ixy="0.0" ixz="0.0" iyy="0.000010" iyz="0.0" izz="0.000010"/>
     </inertial>
@@ -229,7 +229,7 @@
     </collision>
     <!-- TODO: GET APPROPOATE MASSES -(this is 50g ball at end)  -->
     <inertial>
-      <mass value="0.05"/>
+      <mass value="0.0"/>
       <origin xyz="0.01 -0.045 0.0"/>
       <inertia ixx="0.000010" ixy="0.0" ixz="0.0" iyy="0.000010" iyz="0.0" izz="0.000010"/>
     </inertial>

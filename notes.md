@@ -42,3 +42,5 @@ ERROR: Unsatisfiable requirements detected for package GeometryBasics [5c1252a2]
  ```
  
 Updated to Julia 1.6.3 instead of 1.0.4 and now GeometryBasics is installed. It took approximately an hour and a half to upgrade Julia and get the jupyter notebook working again. Really, all you need to do it install Julia again, change the ~/.bashrc file to add the right installation to the path, delete the old one from the bashrc, and enjoy. You will have to restart Julia, use the package manager to add IJulia again, and build IJulia. (Or you might have to manually make another jupyter kernel by copying the existing one and changing its name... but hopefully it wasn't that.) Restart the terminal or VS Code often to make sure the things you're doing are taking effect. 
+
+10/14: Added frames for center of buoyancy and made wrenches in those locations. Finally figured out how to pass that dictionary of wrenches around. Next steps: add buoyancy to the inverse dynamics; add the added mass and coriolis terms; add one degree of freedom in world space. 
