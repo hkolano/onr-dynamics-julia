@@ -3,7 +3,7 @@ import RigidBodyDynamics: default_constraint_stabilization_gains
 import RigidBodyDynamics
 import RigidBodyDynamics.cache_eltype
 
-function simulate_with_ext_forces(state0::MechanismState{X}, final_time, hydro_calc!, control! = zero_torque!;
+function simulate_with_ext_forces(state0::MechanismState{X}, final_time, hydro_calc!, added_calc, control! = zero_torque!;
         Δt = 1e-4, stabilization_gains=default_constraint_stabilization_gains(X)) where X 
     T = cache_eltype(state0)
     result = DynamicsResult{T}(state0.mechanism)
@@ -13,8 +13,16 @@ function simulate_with_ext_forces(state0::MechanismState{X}, final_time, hydro_c
         function (v̇::AbstractArray, ṡ::AbstractArray, t, state)
             control!(control_torques, t, state, hydro_calc!)
             hydro_calc!(hydro_wrenches, t, state)
+            tau_added = added_calc(state, result.v̇)
+            input_torques = control_torques - tau_added
             # println(hydro_wrenches[BodyID(5)].linear)
-            dynamics!(result, state, control_torques, hydro_wrenches; stabilization_gains=stabilization_gains)
+            # println("OG control torques")
+            # println(control_torques)
+            # println("Added tau")
+            # println(tau_added)
+            # println("Combined torques")
+            # println(input_torques)
+            dynamics!(result, state, input_torques, hydro_wrenches; stabilization_gains=stabilization_gains)
             copyto!(v̇, result.v̇)
             copyto!(ṡ, result.ṡ)
             nothing
