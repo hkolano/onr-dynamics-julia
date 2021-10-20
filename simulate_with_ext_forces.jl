@@ -11,7 +11,7 @@ function simulate_with_ext_forces(state0::MechanismState{X}, final_time, hydro_c
     hydro_wrenches = Dict{BodyID, Wrench{Float64}}()
     closed_loop_dynamics! = let result=result, hydro_wrenches=hydro_wrenches, control_torques=control_torques, stabilization_gains=stabilization_gains # https://github.com/JuliaLang/julia/issues/15276
         function (v̇::AbstractArray, ṡ::AbstractArray, t, state)
-            control!(control_torques, t, state)
+            control!(control_torques, t, state, hydro_calc!)
             hydro_calc!(hydro_wrenches, t, state)
             # println(hydro_wrenches[BodyID(5)].linear)
             dynamics!(result, state, control_torques, hydro_wrenches; stabilization_gains=stabilization_gains)
