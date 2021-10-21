@@ -3,7 +3,7 @@ import RigidBodyDynamics: default_constraint_stabilization_gains
 import RigidBodyDynamics
 import RigidBodyDynamics.cache_eltype
 
-function simulate_with_ext_forces(state0::MechanismState{X}, final_time, hydro_calc!, added_calc, control! = zero_torque!;
+function simulate_with_ext_forces(state0::MechanismState{X}, final_time, hydro_calc!, control! = zero_torque!;
         Δt = 1e-4, stabilization_gains=default_constraint_stabilization_gains(X)) where X 
     T = cache_eltype(state0)
     result = DynamicsResult{T}(state0.mechanism)
@@ -11,10 +11,11 @@ function simulate_with_ext_forces(state0::MechanismState{X}, final_time, hydro_c
     hydro_wrenches = Dict{BodyID, Wrench{Float64}}()
     closed_loop_dynamics! = let result=result, hydro_wrenches=hydro_wrenches, control_torques=control_torques, stabilization_gains=stabilization_gains # https://github.com/JuliaLang/julia/issues/15276
         function (v̇::AbstractArray, ṡ::AbstractArray, t, state)
+            println("------ NEW SIM STATE -----")
             control!(control_torques, t, state, hydro_calc!)
-            hydro_calc!(hydro_wrenches, t, state)
-            tau_added = added_calc(state, result.v̇)
-            input_torques = control_torques - tau_added
+            hydro_calc!(hydro_wrenches, t, state, result.v̇)
+            # tau_added = added_calc(state, result.v̇)
+            # input_torques = control_torques - tau_added
             # println(hydro_wrenches[BodyID(5)].linear)
             # println("OG control torques")
             # println(control_torques)
@@ -22,7 +23,7 @@ function simulate_with_ext_forces(state0::MechanismState{X}, final_time, hydro_c
             # println(tau_added)
             # println("Combined torques")
             # println(input_torques)
-            dynamics!(result, state, input_torques, hydro_wrenches; stabilization_gains=stabilization_gains)
+            dynamics!(result, state, control_torques, hydro_wrenches; stabilization_gains=stabilization_gains)
             copyto!(v̇, result.v̇)
             copyto!(ṡ, result.ṡ)
             nothing
