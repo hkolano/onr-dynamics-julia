@@ -44,7 +44,7 @@
       <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
     </inertial>
   </link>
-  <joint name="vehicle_to_world" type="fixed">
+  <joint name="vehicle_to_world" type="prismatic">
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <parent link="base_link"/>
     <child link="vehicle_base_link"/>
@@ -62,8 +62,16 @@
       <!-- <origin rpy="0 0 0" xyz="0 0 0"/> -->
       <!-- <material name="alpha_black"/> -->
     </visual>
+    <inertial>
+      <!-- Actual *not added* -->
+      <mass value="22.2"/> 
+      <!-- Assume COM is 6cm below the center of the green box (13.5cm from top of vehicle) -->
+      <origin xyz="0.0 0.0 -0.06"/>
+      <inertia ixx=".75" ixy="0.0" ixz="0.0" iyy="1.4" iyz="0.0" izz="1.6"/>
+    </inertial>
   </link>
 
+<!-- ======= Bottom Frame ======= -->
   <link name="F_R_bar">
     <visual>
       <geometry>
@@ -90,20 +98,20 @@
       <child link="F_L_bar"/>
       <origin rpy="0 1.57075 0" xyz="0.225 .19 -.2"/>
     </joint>
-    <link name="B_L_bar">
-    <visual>
-      <geometry>
-        <box size = "0.25 0.02 0.05"/>
-      </geometry>
-      <material name="black_v"/>
-    </visual>
+  <link name="B_L_bar">
+      <visual>
+        <geometry>
+          <box size = "0.25 0.02 0.05"/>
+        </geometry>
+        <material name="black_v"/>
+      </visual>
   </link>
     <joint name="BLBarJoint" type="fixed">
       <parent link="vehicle_base_link"/>
       <child link="B_L_bar"/>
       <origin rpy="0 1.57075 0" xyz="-0.225 .19 -.2"/>
     </joint>
-    <link name="B_R_bar">
+  <link name="B_R_bar">
     <visual>
       <geometry>
         <box size = "0.25 0.02 0.05"/>
