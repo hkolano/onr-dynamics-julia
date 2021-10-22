@@ -48,3 +48,7 @@ Updated to Julia 1.6.3 instead of 1.0.4 and now GeometryBasics is installed. It 
 10/20: Controller now calls hydro_calc! and uses it as an input to inversedynamics(). Kind of assumes we have perfect knowledge of the state of the robot. 
 
 Started trying to implement added mass forces, but it's creating NaNs in simulation. Maybe try converting the torques into external wrenches instead.
+
+That also led to instabilities
+
+10/21: New plan: add M_A and C_A as extra mass in URDF and implement buoyancy and gravity as external forces. This seems to work better. New script: alphasim_comboURDF.ipynb and new URDF: alphaArmCombo.urdf
