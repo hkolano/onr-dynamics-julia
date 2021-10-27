@@ -52,3 +52,9 @@ Started trying to implement added mass forces, but it's creating NaNs in simulat
 That also led to instabilities
 
 10/21: New plan: add M_A and C_A as extra mass in URDF and implement buoyancy and gravity as external forces. This seems to work better. New script: alphasim_comboURDF.ipynb and new URDF: alphaArmCombo.urdf
+
+The seabotix STL file is terrible to work with (IE Blender is terrible), so just used Scott's URDF from PDave and added a few elements.
+
+Started adding frames for COM and COB for the arm base frame, but couldn't figure out how to get the transform. 
+
+10/22: one dof works! Still trying to make sure the buoyancy and gravity for the bas
