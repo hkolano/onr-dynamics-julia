@@ -58,3 +58,9 @@ The seabotix STL file is terrible to work with (IE Blender is terrible), so just
 Started adding frames for COM and COB for the arm base frame, but couldn't figure out how to get the transform. 
 
 10/22: one dof works! Still trying to make sure the buoyancy and gravity for the bas
+
+10/28:
+
+sim_main_wvirtualmass.ipynb is for trying out different added mass values in different directions.
+
+alpha_seabotix_virtualmasses.urdf is the urdf for the same.

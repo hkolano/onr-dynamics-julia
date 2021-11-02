@@ -12,18 +12,20 @@ function simulate_with_ext_forces(state0::MechanismState{X}, final_time, hydro_c
     closed_loop_dynamics! = let result=result, hydro_wrenches=hydro_wrenches, control_torques=control_torques, stabilization_gains=stabilization_gains # https://github.com/JuliaLang/julia/issues/15276
         function (v̇::AbstractArray, ṡ::AbstractArray, t, state)
             # println("------ NEW SIM STATE -----")
-            control!(control_torques, t, state, hydro_calc!)
+            # println("Current State:")
+            # println(configuration(state))
             hydro_calc!(hydro_wrenches, t, state)
-            # tau_added = added_calc(state, result.v̇)
-            # input_torques = control_torques - tau_added
-            # println(hydro_wrenches[BodyID(5)].linear)
-            # println("OG control torques")
+            control!(control_torques, t, state, hydro_wrenches)
+            # println("Control torques")
             # println(control_torques)
-            # println("Added tau")
-            # println(tau_added)
-            # println("Combined torques")
-            # println(input_torques)
+
+            # hydro_calc!(hydro_wrenches, t, state)
+            # println("Hydro wrenches")
+            # println(hydro_wrenches)
+
             dynamics!(result, state, control_torques, hydro_wrenches; stabilization_gains=stabilization_gains)
+            # println("result:")
+            # println(result.v̇)
             copyto!(v̇, result.v̇)
             copyto!(ṡ, result.ṡ)
             nothing
