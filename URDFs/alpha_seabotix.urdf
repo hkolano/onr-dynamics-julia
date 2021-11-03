@@ -62,9 +62,9 @@
     <axis xyz="0.0 1.0 0.0"/>
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <parent link="virtual_x"/>
-    <child link="vehicle_base_link"/>
+    <child link="virtual_y"/>
   </joint>
-<!-- 
+ 
   <link name="virtual_y">
     <inertial>
       <mass value="0."/>
@@ -90,9 +90,9 @@
     <axis xyz="1.0 0.0 0.0"/>
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <parent link="virtual_z"/>
-    <child link="virtual_roll"/>
+    <child link="vehicle_base_link"/>
   </joint>
-
+<!--
   <link name="virtual_roll">
     <inertial>
       <mass value="0."/>
