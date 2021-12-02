@@ -15,7 +15,7 @@ function simulate_with_ext_forces(state0::MechanismState{X}, final_time, hydro_c
             # println("Current State:")
             # println(configuration(state))
             hydro_calc!(hydro_wrenches, t, state)
-            control!(control_torques, t, state, hydro_wrenches)
+            control!(control_torques, t, state, hydro_wrenches, result.v̇)
             # println("Control torques")
             # println(control_torques)
 
