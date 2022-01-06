@@ -4,7 +4,7 @@ using RigidBodyDynamics
 
 Kp = 50.
 Kd = 2.0
-torque_lims = (base_joint=9.0, shoulder_joint=9.0, elbow_joint=9.0, wrist_joint=5.0)
+torque_lims = (base_joint=9.0, shoulder_joint=9.0, elbow_joint=9.0, wrist_joint=0.6)
 vel_error_cache = (base_joint=[0.0], shoulder_joint=[0.0], elbow_joint=[0.0], wrist_joint=[0.0])
 # ------------------------------------------------------------------------
 #                          SETUP FUNCTIONS
