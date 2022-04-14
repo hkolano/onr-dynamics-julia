@@ -51,13 +51,26 @@
       <!-- <origin rpy="0 0 0" xyz="0 0 0"/> -->
       <!-- <material name="alpha_black"/> -->
     </visual>
+    <!-- Actual *not added* -->
+    <!-- <inertial> -->
+      <!-- <mass value="22.2"/>  -->
+      <!-- Assume COM is 6cm below the center of the green box (13.5cm from top of vehicle) -->
+      <!-- <origin xyz="0.0 0.0 -0.06"/> -->
+      <!-- <inertia ixx=".75" ixy="0.0" ixz="0.0"  -->
+      <!-- iyy="1.4" iyz="0.0"  -->
+      <!-- izz="1.6"/> -->
+    <!-- </inertial> -->
     <inertial>
-      <!-- Actual *not added* -->
-      <mass value="22.2"/> 
+      <!-- Plus small (conservative) added mass -->
+      <mass value="30.3"/> 
       <!-- Assume COM is 6cm below the center of the green box (13.5cm from top of vehicle) -->
       <origin xyz="0.0 0.0 -0.06"/>
-      <inertia ixx=".75" ixy="0.0" ixz="0.0" iyy="1.4" iyz="0.0" izz="1.6"/>
+      <inertia ixx="6.31" ixy="0.0" ixz="0.22" 
+      iyy="10.15" iyz="0.0" 
+      izz="3.93"/>
     </inertial>
+    
+    
   </link>
 
 <!-- IF YOU EVER ADD MORE LINKS, MAKE SURE TO CHANGE THE BUOYANCY FRAME VECTOR FOR THE ARM BASE FRAME!!! -->

@@ -402,13 +402,7 @@
     </visual>
   </link> -->
 
-  <link name="bravo_push_rod" >
-      <inertial>
-        <mass value="5.0"/>
-        <origin xyz="0.01 -0.045 0.0"/>
-        <inertia ixx="0.000010" ixy="0.0" ixz="0.0" iyy="0.000010" iyz="0.0" izz="0.000010"/>
-    </inertial>
-  </link>
+  <link name="bravo_push_rod"/>
   <joint name="bravo_axis_a" type="prismatic">
     <origin rpy="0 0 0" xyz="0 0 0.009"/>
     <parent link="bravo_jaws_base_link"/>
